@@ -1,0 +1,1101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище user60Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ID_activity" />
+          </Key>
+          <Property Name="ID_activity" Type="int" Nullable="false" />
+          <Property Name="Activity" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Activity_event">
+          <Key>
+            <PropertyRef Name="ID_activity" />
+            <PropertyRef Name="ID_event" />
+            <PropertyRef Name="day" />
+          </Key>
+          <Property Name="ID_activity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_event" Type="int" Nullable="false" />
+          <Property Name="day" Type="int" Nullable="false" />
+          <Property Name="start_time" Type="time" Precision="7" />
+          <Property Name="ID_uzer" Type="int" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID_city" />
+          </Key>
+          <Property Name="ID_city" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="hyperlink" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID_country" />
+          </Key>
+          <Property Name="ID_country" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="ID_country_2" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="english_name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Direction">
+          <Key>
+            <PropertyRef Name="ID_direction" />
+          </Key>
+          <Property Name="ID_direction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Direction" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID_event" />
+          </Key>
+          <Property Name="ID_event" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Date_start" Type="date" />
+          <Property Name="Amount_of_day" Type="int" />
+          <Property Name="ID_uzer_winner" Type="int" />
+        </EntityType>
+        <EntityType Name="Event_city">
+          <Key>
+            <PropertyRef Name="ID_event" />
+            <PropertyRef Name="ID_city" />
+          </Key>
+          <Property Name="ID_event" Type="int" Nullable="false" />
+          <Property Name="ID_city" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event_jury">
+          <Key>
+            <PropertyRef Name="ID_event" />
+            <PropertyRef Name="ID_activity" />
+            <PropertyRef Name="Id_uzer" />
+          </Key>
+          <Property Name="ID_event" Type="int" Nullable="false" />
+          <Property Name="ID_activity" Type="int" Nullable="false" />
+          <Property Name="Id_uzer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event_type_event">
+          <Key>
+            <PropertyRef Name="ID_event" />
+            <PropertyRef Name="ID_type_event" />
+          </Key>
+          <Property Name="ID_event" Type="int" Nullable="false" />
+          <Property Name="ID_type_event" Type="int" Nullable="false" />
+          <Property Name="ID_direction" Type="int" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID_gender" />
+          </Key>
+          <Property Name="ID_gender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Type_event">
+          <Key>
+            <PropertyRef Name="ID_type_event" />
+          </Key>
+          <Property Name="ID_type_event" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipe_event" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Uzer">
+          <Key>
+            <PropertyRef Name="ID_uzer" />
+          </Key>
+          <Property Name="ID_uzer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Last_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="E-mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birth_date" Type="date" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Photo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Uzer_direction">
+          <Key>
+            <PropertyRef Name="ID_uzer" />
+            <PropertyRef Name="ID_direction" />
+          </Key>
+          <Property Name="ID_uzer" Type="int" Nullable="false" />
+          <Property Name="ID_direction" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uzer_gender">
+          <Key>
+            <PropertyRef Name="ID_uzer" />
+            <PropertyRef Name="ID_gender" />
+          </Key>
+          <Property Name="ID_uzer" Type="int" Nullable="false" />
+          <Property Name="ID_gender" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uzer_role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_uzer" Type="int" Nullable="false" />
+          <Property Name="ID_role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uzer_type_event">
+          <Key>
+            <PropertyRef Name="ID_uzer" />
+            <PropertyRef Name="ID_tipe_event" />
+          </Key>
+          <Property Name="ID_uzer" Type="int" Nullable="false" />
+          <Property Name="ID_tipe_event" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Activity_event_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="Activity_event" Type="Self.Activity_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID_activity" />
+            </Principal>
+            <Dependent Role="Activity_event">
+              <PropertyRef Name="ID_activity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_event_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Activity_event" Type="Self.Activity_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID_event" />
+            </Principal>
+            <Dependent Role="Activity_event">
+              <PropertyRef Name="ID_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_event_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="0..1" />
+          <End Role="Activity_event" Type="Self.Activity_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Activity_event">
+              <PropertyRef Name="ID_uzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_city_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Event_city" Type="Self.Event_city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID_city" />
+            </Principal>
+            <Dependent Role="Event_city">
+              <PropertyRef Name="ID_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_city_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Event_city" Type="Self.Event_city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID_event" />
+            </Principal>
+            <Dependent Role="Event_city">
+              <PropertyRef Name="ID_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_jury_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="Event_jury" Type="Self.Event_jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID_activity" />
+            </Principal>
+            <Dependent Role="Event_jury">
+              <PropertyRef Name="ID_activity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_jury_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Event_jury" Type="Self.Event_jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID_event" />
+            </Principal>
+            <Dependent Role="Event_jury">
+              <PropertyRef Name="ID_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_jury_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="1" />
+          <End Role="Event_jury" Type="Self.Event_jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Event_jury">
+              <PropertyRef Name="Id_uzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_type_event_Direction">
+          <End Role="Direction" Type="Self.Direction" Multiplicity="0..1" />
+          <End Role="Event_type_event" Type="Self.Event_type_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direction">
+              <PropertyRef Name="ID_direction" />
+            </Principal>
+            <Dependent Role="Event_type_event">
+              <PropertyRef Name="ID_direction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_type_event_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Event_type_event" Type="Self.Event_type_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID_event" />
+            </Principal>
+            <Dependent Role="Event_type_event">
+              <PropertyRef Name="ID_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_type_event_Type_event">
+          <End Role="Type_event" Type="Self.Type_event" Multiplicity="1" />
+          <End Role="Event_type_event" Type="Self.Event_type_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_event">
+              <PropertyRef Name="ID_type_event" />
+            </Principal>
+            <Dependent Role="Event_type_event">
+              <PropertyRef Name="ID_type_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="0..1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="ID_uzer_winner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_direction_Direction">
+          <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
+          <End Role="Uzer_direction" Type="Self.Uzer_direction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direction">
+              <PropertyRef Name="ID_direction" />
+            </Principal>
+            <Dependent Role="Uzer_direction">
+              <PropertyRef Name="ID_direction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_direction_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="1" />
+          <End Role="Uzer_direction" Type="Self.Uzer_direction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Uzer_direction">
+              <PropertyRef Name="ID_uzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_event_Type_event">
+          <End Role="Type_event" Type="Self.Type_event" Multiplicity="1" />
+          <End Role="Uzer_type_event" Type="Self.Uzer_type_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_event">
+              <PropertyRef Name="ID_type_event" />
+            </Principal>
+            <Dependent Role="Uzer_type_event">
+              <PropertyRef Name="ID_tipe_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_event_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="1" />
+          <End Role="Uzer_type_event" Type="Self.Uzer_type_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Uzer_type_event">
+              <PropertyRef Name="ID_uzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_gender_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Uzer_gender" Type="Self.Uzer_gender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID_gender" />
+            </Principal>
+            <Dependent Role="Uzer_gender">
+              <PropertyRef Name="ID_gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_gender_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="1" />
+          <End Role="Uzer_gender" Type="Self.Uzer_gender" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Uzer_gender">
+              <PropertyRef Name="ID_uzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_role_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Uzer_role" Type="Self.Uzer_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="Uzer_role">
+              <PropertyRef Name="ID_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_role_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="1" />
+          <End Role="Uzer_role" Type="Self.Uzer_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Uzer_role">
+              <PropertyRef Name="ID_uzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище user60ModelContainer">
+          <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Activity_event" EntityType="Self.Activity_event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Direction" EntityType="Self.Direction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event_city" EntityType="Self.Event_city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event_jury" EntityType="Self.Event_jury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event_type_event" EntityType="Self.Event_type_event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_event" EntityType="Self.Type_event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzer" EntityType="Self.Uzer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzer_direction" EntityType="Self.Uzer_direction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzer_gender" EntityType="Self.Uzer_gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzer_role" EntityType="Self.Uzer_role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzer_type_event" EntityType="Self.Uzer_type_event" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Activity_event_Activity" Association="Self.FK_Activity_event_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="Activity_event" EntitySet="Activity_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_event_Event" Association="Self.FK_Activity_event_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Activity_event" EntitySet="Activity_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_event_Uzer" Association="Self.FK_Activity_event_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Activity_event" EntitySet="Activity_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_city_City" Association="Self.FK_Event_city_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Event_city" EntitySet="Event_city" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_city_Event" Association="Self.FK_Event_city_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Event_city" EntitySet="Event_city" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_jury_Activity" Association="Self.FK_Event_jury_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="Event_jury" EntitySet="Event_jury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_jury_Event" Association="Self.FK_Event_jury_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Event_jury" EntitySet="Event_jury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_jury_Uzer" Association="Self.FK_Event_jury_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Event_jury" EntitySet="Event_jury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_type_event_Direction" Association="Self.FK_Event_type_event_Direction">
+            <End Role="Direction" EntitySet="Direction" />
+            <End Role="Event_type_event" EntitySet="Event_type_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_type_event_Event" Association="Self.FK_Event_type_event_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Event_type_event" EntitySet="Event_type_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_type_event_Type_event" Association="Self.FK_Event_type_event_Type_event">
+            <End Role="Type_event" EntitySet="Type_event" />
+            <End Role="Event_type_event" EntitySet="Event_type_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Uzer" Association="Self.FK_Event_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_direction_Direction" Association="Self.FK_Uzer_direction_Direction">
+            <End Role="Direction" EntitySet="Direction" />
+            <End Role="Uzer_direction" EntitySet="Uzer_direction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_direction_Uzer" Association="Self.FK_Uzer_direction_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Uzer_direction" EntitySet="Uzer_direction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_event_Type_event" Association="Self.FK_Uzer_event_Type_event">
+            <End Role="Type_event" EntitySet="Type_event" />
+            <End Role="Uzer_type_event" EntitySet="Uzer_type_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_event_Uzer" Association="Self.FK_Uzer_event_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Uzer_type_event" EntitySet="Uzer_type_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_gender_Gender" Association="Self.FK_Uzer_gender_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Uzer_gender" EntitySet="Uzer_gender" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_gender_Uzer" Association="Self.FK_Uzer_gender_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Uzer_gender" EntitySet="Uzer_gender" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_role_Role" Association="Self.FK_Uzer_role_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Uzer_role" EntitySet="Uzer_role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_role_Uzer" Association="Self.FK_Uzer_role_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Uzer_role" EntitySet="Uzer_role" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="user60Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ID_activity" />
+          </Key>
+          <Property Name="ID_activity" Type="Int32" Nullable="false" />
+          <Property Name="Activity1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Activity_event" Relationship="Self.FK_Activity_event_Activity" FromRole="Activity" ToRole="Activity_event" />
+          <NavigationProperty Name="Event_jury" Relationship="Self.FK_Event_jury_Activity" FromRole="Activity" ToRole="Event_jury" />
+        </EntityType>
+        <EntityType Name="Activity_event">
+          <Key>
+            <PropertyRef Name="ID_activity" />
+            <PropertyRef Name="ID_event" />
+            <PropertyRef Name="day" />
+          </Key>
+          <Property Name="ID_activity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_event" Type="Int32" Nullable="false" />
+          <Property Name="day" Type="Int32" Nullable="false" />
+          <Property Name="start_time" Type="Time" Precision="7" />
+          <Property Name="ID_uzer" Type="Int32" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_event_Activity" FromRole="Activity_event" ToRole="Activity" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Activity_event_Event" FromRole="Activity_event" ToRole="Event" />
+          <NavigationProperty Name="Uzer" Relationship="Self.FK_Activity_event_Uzer" FromRole="Activity_event" ToRole="Uzer" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID_city" />
+          </Key>
+          <Property Name="ID_city" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hyperlink" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Event" Relationship="Self.Event_city" FromRole="City" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID_country" />
+          </Key>
+          <Property Name="ID_country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_country_2" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="english_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Direction">
+          <Key>
+            <PropertyRef Name="ID_direction" />
+          </Key>
+          <Property Name="ID_direction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Direction1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Event_type_event" Relationship="Self.FK_Event_type_event_Direction" FromRole="Direction" ToRole="Event_type_event" />
+          <NavigationProperty Name="Uzer" Relationship="Self.Uzer_direction" FromRole="Direction" ToRole="Uzer" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID_event" />
+          </Key>
+          <Property Name="ID_event" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Date_start" Type="DateTime" Precision="0" />
+          <Property Name="Amount_of_day" Type="Int32" />
+          <Property Name="ID_uzer_winner" Type="Int32" />
+          <NavigationProperty Name="Activity_event" Relationship="Self.FK_Activity_event_Event" FromRole="Event" ToRole="Activity_event" />
+          <NavigationProperty Name="Event_jury" Relationship="Self.FK_Event_jury_Event" FromRole="Event" ToRole="Event_jury" />
+          <NavigationProperty Name="Event_type_event" Relationship="Self.FK_Event_type_event_Event" FromRole="Event" ToRole="Event_type_event" />
+          <NavigationProperty Name="Uzer" Relationship="Self.FK_Event_Uzer" FromRole="Event" ToRole="Uzer" />
+          <NavigationProperty Name="City" Relationship="Self.Event_city" FromRole="Event" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Event_jury">
+          <Key>
+            <PropertyRef Name="ID_event" />
+            <PropertyRef Name="ID_activity" />
+            <PropertyRef Name="Id_uzer" />
+          </Key>
+          <Property Name="ID_event" Type="Int32" Nullable="false" />
+          <Property Name="ID_activity" Type="Int32" Nullable="false" />
+          <Property Name="Id_uzer" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_Event_jury_Activity" FromRole="Event_jury" ToRole="Activity" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Event_jury_Event" FromRole="Event_jury" ToRole="Event" />
+          <NavigationProperty Name="Uzer" Relationship="Self.FK_Event_jury_Uzer" FromRole="Event_jury" ToRole="Uzer" />
+        </EntityType>
+        <EntityType Name="Event_type_event">
+          <Key>
+            <PropertyRef Name="ID_event" />
+            <PropertyRef Name="ID_type_event" />
+          </Key>
+          <Property Name="ID_event" Type="Int32" Nullable="false" />
+          <Property Name="ID_type_event" Type="Int32" Nullable="false" />
+          <Property Name="ID_direction" Type="Int32" />
+          <NavigationProperty Name="Direction" Relationship="Self.FK_Event_type_event_Direction" FromRole="Event_type_event" ToRole="Direction" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Event_type_event_Event" FromRole="Event_type_event" ToRole="Event" />
+          <NavigationProperty Name="Type_event" Relationship="Self.FK_Event_type_event_Type_event" FromRole="Event_type_event" ToRole="Type_event" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID_gender" />
+          </Key>
+          <Property Name="ID_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Uzer" Relationship="Self.Uzer_gender" FromRole="Gender" ToRole="Uzer" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Uzer_role" Relationship="Self.FK_Uzer_role_Role" FromRole="Role" ToRole="Uzer_role" />
+        </EntityType>
+        <EntityType Name="Type_event">
+          <Key>
+            <PropertyRef Name="ID_type_event" />
+          </Key>
+          <Property Name="ID_type_event" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipe_event" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Event_type_event" Relationship="Self.FK_Event_type_event_Type_event" FromRole="Type_event" ToRole="Event_type_event" />
+          <NavigationProperty Name="Uzer" Relationship="Self.Uzer_type_event" FromRole="Type_event" ToRole="Uzer" />
+        </EntityType>
+        <EntityType Name="Uzer">
+          <Key>
+            <PropertyRef Name="ID_uzer" />
+          </Key>
+          <Property Name="ID_uzer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birth_date" Type="DateTime" Precision="0" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Activity_event" Relationship="Self.FK_Activity_event_Uzer" FromRole="Uzer" ToRole="Activity_event" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_Event_Uzer" FromRole="Uzer" ToRole="Event" />
+          <NavigationProperty Name="Event_jury" Relationship="Self.FK_Event_jury_Uzer" FromRole="Uzer" ToRole="Event_jury" />
+          <NavigationProperty Name="Uzer_role" Relationship="Self.FK_Uzer_role_Uzer" FromRole="Uzer" ToRole="Uzer_role" />
+          <NavigationProperty Name="Direction" Relationship="Self.Uzer_direction" FromRole="Uzer" ToRole="Direction" />
+          <NavigationProperty Name="Gender" Relationship="Self.Uzer_gender" FromRole="Uzer" ToRole="Gender" />
+          <NavigationProperty Name="Type_event" Relationship="Self.Uzer_type_event" FromRole="Uzer" ToRole="Type_event" />
+        </EntityType>
+        <EntityType Name="Uzer_role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_uzer" Type="Int32" Nullable="false" />
+          <Property Name="ID_role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Uzer_role_Role" FromRole="Uzer_role" ToRole="Role" />
+          <NavigationProperty Name="Uzer" Relationship="Self.FK_Uzer_role_Uzer" FromRole="Uzer_role" ToRole="Uzer" />
+        </EntityType>
+        <Association Name="FK_Activity_event_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="Activity_event" Type="Self.Activity_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID_activity" />
+            </Principal>
+            <Dependent Role="Activity_event">
+              <PropertyRef Name="ID_activity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_jury_Activity">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+          <End Role="Event_jury" Type="Self.Event_jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID_activity" />
+            </Principal>
+            <Dependent Role="Event_jury">
+              <PropertyRef Name="ID_activity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_event_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Activity_event" Type="Self.Activity_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID_event" />
+            </Principal>
+            <Dependent Role="Activity_event">
+              <PropertyRef Name="ID_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activity_event_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="0..1" />
+          <End Role="Activity_event" Type="Self.Activity_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Activity_event">
+              <PropertyRef Name="ID_uzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_type_event_Direction">
+          <End Role="Direction" Type="Self.Direction" Multiplicity="0..1" />
+          <End Role="Event_type_event" Type="Self.Event_type_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Direction">
+              <PropertyRef Name="ID_direction" />
+            </Principal>
+            <Dependent Role="Event_type_event">
+              <PropertyRef Name="ID_direction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_jury_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Event_jury" Type="Self.Event_jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID_event" />
+            </Principal>
+            <Dependent Role="Event_jury">
+              <PropertyRef Name="ID_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_type_event_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="Event_type_event" Type="Self.Event_type_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID_event" />
+            </Principal>
+            <Dependent Role="Event_type_event">
+              <PropertyRef Name="ID_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="0..1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="ID_uzer_winner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_jury_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="1" />
+          <End Role="Event_jury" Type="Self.Event_jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Event_jury">
+              <PropertyRef Name="Id_uzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_type_event_Type_event">
+          <End Role="Type_event" Type="Self.Type_event" Multiplicity="1" />
+          <End Role="Event_type_event" Type="Self.Event_type_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_event">
+              <PropertyRef Name="ID_type_event" />
+            </Principal>
+            <Dependent Role="Event_type_event">
+              <PropertyRef Name="ID_type_event" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_role_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Uzer_role" Type="Self.Uzer_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="Uzer_role">
+              <PropertyRef Name="ID_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uzer_role_Uzer">
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="1" />
+          <End Role="Uzer_role" Type="Self.Uzer_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzer">
+              <PropertyRef Name="ID_uzer" />
+            </Principal>
+            <Dependent Role="Uzer_role">
+              <PropertyRef Name="ID_uzer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Event_city">
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+        </Association>
+        <Association Name="Uzer_direction">
+          <End Role="Direction" Type="Self.Direction" Multiplicity="*" />
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="*" />
+        </Association>
+        <Association Name="Uzer_gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="*" />
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="*" />
+        </Association>
+        <Association Name="Uzer_type_event">
+          <End Role="Type_event" Type="Self.Type_event" Multiplicity="*" />
+          <End Role="Uzer" Type="Self.Uzer" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="user60Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activity" EntityType="Self.Activity" />
+          <EntitySet Name="Activity_event" EntityType="Self.Activity_event" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Direction" EntityType="Self.Direction" />
+          <EntitySet Name="Event" EntityType="Self.Event" />
+          <EntitySet Name="Event_jury" EntityType="Self.Event_jury" />
+          <EntitySet Name="Event_type_event" EntityType="Self.Event_type_event" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Type_event" EntityType="Self.Type_event" />
+          <EntitySet Name="Uzer" EntityType="Self.Uzer" />
+          <EntitySet Name="Uzer_role" EntityType="Self.Uzer_role" />
+          <AssociationSet Name="FK_Activity_event_Activity" Association="Self.FK_Activity_event_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="Activity_event" EntitySet="Activity_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_jury_Activity" Association="Self.FK_Event_jury_Activity">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="Event_jury" EntitySet="Event_jury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_event_Event" Association="Self.FK_Activity_event_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Activity_event" EntitySet="Activity_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activity_event_Uzer" Association="Self.FK_Activity_event_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Activity_event" EntitySet="Activity_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_type_event_Direction" Association="Self.FK_Event_type_event_Direction">
+            <End Role="Direction" EntitySet="Direction" />
+            <End Role="Event_type_event" EntitySet="Event_type_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_jury_Event" Association="Self.FK_Event_jury_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Event_jury" EntitySet="Event_jury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_type_event_Event" Association="Self.FK_Event_type_event_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Event_type_event" EntitySet="Event_type_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Uzer" Association="Self.FK_Event_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_jury_Uzer" Association="Self.FK_Event_jury_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Event_jury" EntitySet="Event_jury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_type_event_Type_event" Association="Self.FK_Event_type_event_Type_event">
+            <End Role="Type_event" EntitySet="Type_event" />
+            <End Role="Event_type_event" EntitySet="Event_type_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_role_Role" Association="Self.FK_Uzer_role_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Uzer_role" EntitySet="Uzer_role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uzer_role_Uzer" Association="Self.FK_Uzer_role_Uzer">
+            <End Role="Uzer" EntitySet="Uzer" />
+            <End Role="Uzer_role" EntitySet="Uzer_role" />
+          </AssociationSet>
+          <AssociationSet Name="Event_city" Association="Self.Event_city">
+            <End Role="City" EntitySet="City" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="Uzer_direction" Association="Self.Uzer_direction">
+            <End Role="Direction" EntitySet="Direction" />
+            <End Role="Uzer" EntitySet="Uzer" />
+          </AssociationSet>
+          <AssociationSet Name="Uzer_gender" Association="Self.Uzer_gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Uzer" EntitySet="Uzer" />
+          </AssociationSet>
+          <AssociationSet Name="Uzer_type_event" Association="Self.Uzer_type_event">
+            <End Role="Type_event" EntitySet="Type_event" />
+            <End Role="Uzer" EntitySet="Uzer" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="user60Model.sysdiagrams" />
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище user60ModelContainer" CdmEntityContainer="user60Entities">
+          <EntitySetMapping Name="Activity">
+            <EntityTypeMapping TypeName="user60Model.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="ID_activity" ColumnName="ID_activity" />
+                <ScalarProperty Name="Activity1" ColumnName="Activity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Activity_event">
+            <EntityTypeMapping TypeName="user60Model.Activity_event">
+              <MappingFragment StoreEntitySet="Activity_event">
+                <ScalarProperty Name="ID_activity" ColumnName="ID_activity" />
+                <ScalarProperty Name="ID_event" ColumnName="ID_event" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="ID_uzer" ColumnName="ID_uzer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="user60Model.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="ID_city" ColumnName="ID_city" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="hyperlink" ColumnName="hyperlink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="user60Model.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="ID_country" ColumnName="ID_country" />
+                <ScalarProperty Name="ID_country_2" ColumnName="ID_country_2" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="english_name" ColumnName="english_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Direction">
+            <EntityTypeMapping TypeName="user60Model.Direction">
+              <MappingFragment StoreEntitySet="Direction">
+                <ScalarProperty Name="ID_direction" ColumnName="ID_direction" />
+                <ScalarProperty Name="Direction1" ColumnName="Direction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="user60Model.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="ID_event" ColumnName="ID_event" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Date_start" ColumnName="Date_start" />
+                <ScalarProperty Name="Amount_of_day" ColumnName="Amount_of_day" />
+                <ScalarProperty Name="ID_uzer_winner" ColumnName="ID_uzer_winner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event_jury">
+            <EntityTypeMapping TypeName="user60Model.Event_jury">
+              <MappingFragment StoreEntitySet="Event_jury">
+                <ScalarProperty Name="ID_event" ColumnName="ID_event" />
+                <ScalarProperty Name="ID_activity" ColumnName="ID_activity" />
+                <ScalarProperty Name="Id_uzer" ColumnName="Id_uzer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event_type_event">
+            <EntityTypeMapping TypeName="user60Model.Event_type_event">
+              <MappingFragment StoreEntitySet="Event_type_event">
+                <ScalarProperty Name="ID_event" ColumnName="ID_event" />
+                <ScalarProperty Name="ID_type_event" ColumnName="ID_type_event" />
+                <ScalarProperty Name="ID_direction" ColumnName="ID_direction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="user60Model.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="ID_gender" ColumnName="ID_gender" />
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="user60Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID_role" ColumnName="ID_role" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_event">
+            <EntityTypeMapping TypeName="user60Model.Type_event">
+              <MappingFragment StoreEntitySet="Type_event">
+                <ScalarProperty Name="ID_type_event" ColumnName="ID_type_event" />
+                <ScalarProperty Name="Tipe_event" ColumnName="Tipe_event" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uzer">
+            <EntityTypeMapping TypeName="user60Model.Uzer">
+              <MappingFragment StoreEntitySet="Uzer">
+                <ScalarProperty Name="ID_uzer" ColumnName="ID_uzer" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+                <ScalarProperty Name="Birth_date" ColumnName="Birth_date" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uzer_role">
+            <EntityTypeMapping TypeName="user60Model.Uzer_role">
+              <MappingFragment StoreEntitySet="Uzer_role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ID_uzer" ColumnName="ID_uzer" />
+                <ScalarProperty Name="ID_role" ColumnName="ID_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Event_city" TypeName="user60Model.Event_city" StoreEntitySet="Event_city">
+            <EndProperty Name="City">
+              <ScalarProperty Name="ID_city" ColumnName="ID_city" />
+            </EndProperty>
+            <EndProperty Name="Event">
+              <ScalarProperty Name="ID_event" ColumnName="ID_event" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Uzer_direction" TypeName="user60Model.Uzer_direction" StoreEntitySet="Uzer_direction">
+            <EndProperty Name="Direction">
+              <ScalarProperty Name="ID_direction" ColumnName="ID_direction" />
+            </EndProperty>
+            <EndProperty Name="Uzer">
+              <ScalarProperty Name="ID_uzer" ColumnName="ID_uzer" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Uzer_gender" TypeName="user60Model.Uzer_gender" StoreEntitySet="Uzer_gender">
+            <EndProperty Name="Gender">
+              <ScalarProperty Name="ID_gender" ColumnName="ID_gender" />
+            </EndProperty>
+            <EndProperty Name="Uzer">
+              <ScalarProperty Name="ID_uzer" ColumnName="ID_uzer" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Uzer_type_event" TypeName="user60Model.Uzer_type_event" StoreEntitySet="Uzer_type_event">
+            <EndProperty Name="Type_event">
+              <ScalarProperty Name="ID_type_event" ColumnName="ID_tipe_event" />
+            </EndProperty>
+            <EndProperty Name="Uzer">
+              <ScalarProperty Name="ID_uzer" ColumnName="ID_uzer" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="user60Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

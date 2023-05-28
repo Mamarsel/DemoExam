@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoExam.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace DemoExam
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow mainController;
         public MainWindow()
         {
             InitializeComponent();
+            mainController = this;
+
+            MainFrame.Navigate(new MainPage());
         }
     }
 }

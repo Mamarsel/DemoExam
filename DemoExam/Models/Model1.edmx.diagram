@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae575a5644a14ca7a57e724429ea8fed" Name="Diagram1">
+        <EntityTypeShape EntityType="user60Model.Activity" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Activity_event" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.City" Width="1.5" PointX="9" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Country" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Direction" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Event" Width="1.5" PointX="11.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Event_jury" Width="1.5" PointX="13.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Event_type_event" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Gender" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Role" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Type_event" Width="1.5" PointX="3.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Uzer" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="user60Model.Uzer_role" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="user60Model.FK_Activity_event_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Event_jury_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Activity_event_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Activity_event_Uzer" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Event_type_event_Direction" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Event_jury_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Event_type_event_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Event_Uzer" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Event_jury_Uzer" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Event_type_event_Type_event" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Uzer_role_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.FK_Uzer_role_Uzer" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.Event_city" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.Uzer_direction" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.Uzer_gender" ManuallyRouted="false" />
+        <AssociationConnector Association="user60Model.Uzer_type_event" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="user60Model.sysdiagrams" Width="1.5" PointX="3.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

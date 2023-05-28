@@ -1,0 +1,19 @@
+﻿<Window x:Class="DemoExam.Windows.CaptchaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoExam.Windows"
+        mc:Ignorable="d"
+        xmlns:easy="clr-namespace:EasyCaptcha.Wpf;assembly=EasyCaptcha.Wpf"
+        Title="CaptchaWindow" MinHeight="200" MinWidth="400" MaxHeight="200" MaxWidth="400">
+    <Grid>
+        <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <easy:Captcha x:Name="CapthcaOutput" ></easy:Captcha>
+            <Button PreviewMouseDown="RefreshCapthca_PreviewMouseDown" x:Name="RefreshCapthca"> Обновить</Button>
+        </WrapPanel>
+        
+        <TextBox Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Margin="10" Height="30" x:Name="InputCapthca" KeyDown="InputCapthca_KeyDown"></TextBox>
+        
+    </Grid>
+</Window>

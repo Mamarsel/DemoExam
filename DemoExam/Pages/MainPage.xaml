@@ -1,0 +1,76 @@
+﻿<Page x:Class="DemoExam.Pages.MainPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:local="clr-namespace:DemoExam.Pages"
+	  mc:Ignorable="d" 
+	  d:DesignHeight="450" d:DesignWidth="800"
+	  Title="MainPage">
+
+	<Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Background="Gray">
+            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Height="18"> Начиная с:</TextBlock>
+                <DatePicker x:Name="DateStartCalendar" Width="200" SelectedDateChanged="DateStartCalendar_SelectedDateChanged">
+                </DatePicker>
+            </WrapPanel>
+
+            <WrapPanel VerticalAlignment="Center" Margin="10" HorizontalAlignment="Left">
+                <TextBlock>Направления:</TextBlock>
+                <ComboBox SelectionChanged="DirectionsCB_SelectionChanged" x:Name="DirectionsCB">
+                    
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel VerticalAlignment="Center" Margin="10" HorizontalAlignment="Right">
+                <TextBlock>Типы:</TextBlock>
+                <ComboBox SelectionChanged="TypesCB_SelectionChanged" x:Name="TypesCB">
+
+                </ComboBox>
+            </WrapPanel>
+        </Grid>
+        
+        
+        
+        
+        <ListView x:Name="EventsListView" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid MinWidth="1000" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="{Binding name}" FontSize="20"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock Text="{Binding Date_start}" FontSize="20"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <TextBlock Text="{Binding Amount_of_day}" FontSize="20"></TextBlock>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+		<!--<Grid  Background="White" Height="40">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="2*"></ColumnDefinition>
+				<ColumnDefinition Width="2*"></ColumnDefinition>
+				<ColumnDefinition Width="2*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Row=""></Grid>
+			<TextBlock x:Name="dsa">dsa</TextBlock>
+			
+		</Grid>-->
+	</Grid>
+</Page>
